@@ -9,21 +9,9 @@ ANSIBLE_PIP := $(ANSIBLE_PYTHON) -m pip
 ANSIBLE_LINT := $(ANSIBLE_VIRTUALENV)/bin/ansible-lint
 ANSIBLE_GALAXY := $(ANSIBLE_VIRTUALENV)/bin/ansible-galaxy
 
-.PHONY: all
-all: $(ANSIBLE_VIRTUALENV) ## Create local environment
-
 .PHONY: clean
 clean: ## Remove cache
-	rm -rf .cache *.tar.gz
-
-.PHONY: build
-build: ## Build collection archive
-	$(ANSIBLE_LINT)
-	$(ANSIBLE_GALAXY) collection build --force
-
-.PHONY: release
-release: build ## Release collection
-	open https://galaxy.ansible.com/my-content/namespaces
+	rm -rf $(ANSIBLE_VIRTUALENV) *.tar.gz
 
 $(ANSIBLE_VIRTUALENV):
 	python3 -m venv $(ANSIBLE_VIRTUALENV)
@@ -31,3 +19,16 @@ $(ANSIBLE_VIRTUALENV):
 	$(ANSIBLE_PIP) install \
 		ansible-lint \
 		ansible>=$(ANSIBLE_VERSION)
+
+.PHONY: virtualenv
+virtualenv: $(ANSIBLE_VIRTUALENV) ## Create local environment
+
+.PHONY: build
+build: virtualenv ## Build collection archive
+	$(ANSIBLE_LINT)
+	$(ANSIBLE_GALAXY) collection build --force
+
+.PHONY: release
+release: build ## Release collection
+	open https://galaxy.ansible.com/my-content/namespaces
+
