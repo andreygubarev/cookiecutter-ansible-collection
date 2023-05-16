@@ -8,4 +8,4 @@ cookiecutter https://github.com/andreygubarev/cookiecutter-ansible-collection.gi
 
 # Reference
 
-- [Cookiecutter](https://cookiecutter.readthedocs.io/en/stable/)
+- [Cookiecutter](https://cookiecutter.readthedocs.io/en/stable/) - Templating library for creating boilerplate for projects.
