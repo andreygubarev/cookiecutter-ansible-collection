@@ -1,2 +1,2 @@
 *.tar.gz
-.venv
+{{ cookiecutter.ansible_virtualenv}}
