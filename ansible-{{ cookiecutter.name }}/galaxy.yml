@@ -7,7 +7,7 @@ readme: README.md
 authors:
   - {{ cookiecutter.author_name }} <{{ cookiecutter.author_email }}> ({{ cookiecutter.author_url }})
 
-description: {{ cookiecutter.description }}}
+description: {{ cookiecutter.description }}
 license_file: LICENSE
 
 tags: []
