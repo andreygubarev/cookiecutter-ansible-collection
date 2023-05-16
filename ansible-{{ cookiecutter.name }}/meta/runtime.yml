@@ -1,2 +1,2 @@
 ---
-requires_ansible: '>={{ cookiecutter.ansible_version }}'
+requires_ansible: '>={{ cookiecutter.ansible_core_version }}'
