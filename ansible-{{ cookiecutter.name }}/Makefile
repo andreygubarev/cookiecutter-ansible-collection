@@ -22,13 +22,12 @@ lint: virtualenv ## Lint Ansible code
 	@$(ANSIBLE_LINT) -v
 
 .PHONY: build
-build: virtualenv ## Build collection archive
-	$(ANSIBLE_LINT)
+build: virtualenv lint ## Build collection archive
 	$(ANSIBLE_GALAXY) collection build --force
 
-.PHONY: release
-release: build ## Release collection
-	open https://galaxy.ansible.com/my-content/namespaces
+.PHONY: publish
+publish: clean build ## Publish collection
+	$(ANSIBLE_GALAXY) collection publish *.tar.gz --api-key $(GALAXY_API_KEY)
 
 .PHONY: clean
 clean: ## Remove temporary files
