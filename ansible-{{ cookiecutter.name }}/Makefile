@@ -1,4 +1,3 @@
-ANSIBLE_VERSION := {{ cookiecutter.ansible_version }}
 ANSIBLE_VIRTUALENV ?= {{ cookiecutter.ansible_virtualenv}}
 ANSIBLE_PYTHON := . $(ANSIBLE_VIRTUALENV)/bin/activate && python3
 ANSIBLE_PIP := $(ANSIBLE_PYTHON) -m pip
@@ -11,8 +10,8 @@ help: ## Show this help
 
 $(ANSIBLE_VIRTUALENV):
 	python3 -m venv $(ANSIBLE_VIRTUALENV)
-	$(ANSIBLE_PIP) install -U pip setuptools wheel
-	$(ANSIBLE_PIP) install -U -r requirements.txt
+	$(ANSIBLE_PIP) install 'setuptools>=45.0.0' wheel
+	$(ANSIBLE_PIP) install -r requirements.txt
 
 .PHONY: virtualenv
 virtualenv: $(ANSIBLE_VIRTUALENV) ## Create local environment
