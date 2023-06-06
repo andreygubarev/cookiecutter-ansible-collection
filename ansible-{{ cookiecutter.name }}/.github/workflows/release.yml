@@ -1,4 +1,5 @@
-name: Main
+{% raw %}
+name: Github Release
 
 on:
   push:
@@ -26,3 +27,4 @@ jobs:
           draft: true
           prerelease: ${{ steps.prerelease.outputs.prerelease }}
           generate_release_notes: true
+{% endraw %}
