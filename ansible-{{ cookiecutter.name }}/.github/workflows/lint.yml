@@ -1,4 +1,4 @@
-{% raw %}
+{%- raw -%}
 name: Ansible Lint
 
 on: [push]
@@ -21,4 +21,4 @@ jobs:
 
     - name: Lint with ansible-lint
       run: ansible-lint -v
-{% endraw %}
+{%- endraw -%}
