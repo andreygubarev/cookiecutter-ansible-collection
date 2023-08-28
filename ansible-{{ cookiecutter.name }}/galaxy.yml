@@ -21,6 +21,5 @@ issues: https://{{ cookiecutter.repository }}/{{ cookiecutter.namespace }}/ansib
 
 build_ignore:
   - Makefile
-  - {{ cookiecutter.ansible_virtualenv}}
   - .git
   - .gitignore
