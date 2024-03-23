@@ -1,5 +1,5 @@
 {%- raw -%}
-name: Ansible Collection
+name: Ansible - Collection
 
 on: [push]
 
@@ -11,12 +11,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
+          python-version: "3.11"
 
       - name: Install dependencies
         run: |
@@ -30,12 +30,12 @@ jobs:
     needs: lint
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
+          python-version: "3.11"
 
       - name: Install dependencies
         run: |
@@ -58,7 +58,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: ansible-collection
-          path: '*.tar.gz'
+          path: "*.tar.gz"
 
   publish:
     runs-on: ubuntu-latest
@@ -70,10 +70,10 @@ jobs:
         with:
           name: ansible-collection
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
+          python-version: "3.11"
 
       - name: Install dependencies
         run: python -m pip install ansible
@@ -93,7 +93,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Check if pre-release
         id: prerelease
